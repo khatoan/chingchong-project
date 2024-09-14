@@ -14,3 +14,13 @@ def chingchong(haystack, needle):
     else: 
         return -1
 print(chingchong(haystack, needle))
+
+def test_chingchong():
+    assert chingchong("sadbutsad", "sad") == 0, "Test 1 không đạt"
+    assert chingchong("sadbutsad", "happy") == -1, "Test 2 không đạt"
+    assert chingchong("sadbutsad", "") == 0, "Test 3 không đạt"
+    assert chingchong("", "sad") == -1, "Test 4 không đạt"
+    assert chingchong("sad", "sad") == 0, "Test 5 không đạt"   
+    assert chingchong("sadbutsad", "b") == 3, "Test 6 không đạt"
+    print("Tất cả test case đều đúng")
+test_chingchong()
