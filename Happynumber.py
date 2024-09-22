@@ -4,6 +4,8 @@ def sumSquare(x):
         T += (int(i)**2)
     return T
 def HappyNumber(n):
+    if n is None:
+        return False 
     H = set() 
     while n != 1:
         n = sumSquare(n)
