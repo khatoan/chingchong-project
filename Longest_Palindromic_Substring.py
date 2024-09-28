@@ -1,13 +1,10 @@
 # Hàm kiểm tra 1 chuỗi có phải là xâu đối xứng
 def check_palindromic(s: str): 
-    if s == s[::-1]:
-        return True
-    else: 
-        return False
+    return s == s[::-1]
 
 def longest_palindromic_substring(s: str):
-    if s == "" or s == None:
-        return "Không được để chuỗi rỗng"
+    if s == None or s == "":
+        return "Tham số không hợp lệ"
     s = s.strip()
     # Khởi tạo chuỗi palindrome dài nhất
     longest_substring = ""  
