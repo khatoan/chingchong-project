@@ -10,9 +10,17 @@ Giới hạn:
 """
 def Tong(s):
     T = 0
-    for i in str(s):
-        T += int(i)
+    while s > 0:
+        T += s%10
+        s = s // 10 
     return T
 def minElement(nums):
-    A = [ Tong(i) for i in nums]
-    return min(A)
+    if nums == None or nums == []: 
+        print("Đầu vào không hợp lệ")
+        return None
+    try:
+        A = [ Tong(i) for i in nums]
+        return min(A)
+    except:
+        print("Đầu vào không hợp lệ")
+        return None 
