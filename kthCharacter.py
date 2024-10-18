@@ -17,6 +17,9 @@ Giới hạn:  1 <= k <=500
 
 """
 def kthCharacter(k):
+    if k == None or not isinstance(k, int) or k <= 0:
+        print("Tham số không hợp lệ")
+        return None
     word = "a"
     generated = "b"
 
