@@ -8,6 +8,7 @@ Giới hạn:
 •	1<=nums.length<=100
 •	1<=nums[i]<=10^4
 """
+
 def Tong(s):
     T = 0
     while s > 0:
