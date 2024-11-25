@@ -1,7 +1,9 @@
 from Min_element import minElement
 from Min_element import Tong
 import random
+
 def test_minElement():
+    
     assert minElement([10,12,13,14]) == 1, "Test 1 không đạt"
     assert minElement([1,2,3,4]) == 1, "Test 2 không đạt"
     assert minElement([99, 19, 199]) == 10, "Test 3 không đạt"
@@ -18,5 +20,6 @@ def test_minElement():
     assert minElement(["a", 'b', 'c']) == None, "Test 9 is incorrect"
     assert minElement([]) == None, "Test 10 is incorrect"
     assert minElement(None) == None, "Test 11 is incorrect"
+
     print("All test case is corect")
 test_minElement()
