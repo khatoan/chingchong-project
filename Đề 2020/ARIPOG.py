@@ -1,10 +1,10 @@
 '''
 Bài 2 (5 điểm): Cấp số cộng
 Cho cấp số cộng (um) có công sai d là số nguyên khác 0. 
-Tức là: um = um-1 + d (m thuộc N*, m ≥ 2 , d  Z , d  0).
+Tức là: um = um-1 + d (m thuộc N*, m ≥ 2 , d thuộc Z , d != 0).
 Ví dụ: Dãy số 2, 5, 8, 11, … là một cấp số cộng với  d = 3 và u1=2.
 Yêu cầu: Cho số nguyên u1 là phần tử đầu tiên của một cấp số cộng, công sai d và một số nguyên x. Hãy cho biết x có thuộc (um) không, nếu có thì x là phần tử thứ mấy?
-Dữ liệu vào: Từ tệp văn bản ARIPOG.INP chứa ba số nguyên u1, d và x (|u1| ≤109, |x| ≤109, |d| ≤109, d  0) được ghi cách nhau bởi một dấu cách.
+Dữ liệu vào: Từ tệp văn bản ARIPOG.INP chứa ba số nguyên u1, d và x (|u1| ≤10^9, |x| ≤10^9, |d| ≤10^9, d!=0) được ghi cách nhau bởi một dấu cách.
 Kết quả: Ghi ra tệp văn bản ARIPOG.OUT một số nguyên duy nhất là vị trí của x trong (um).  Nếu x không thuộc (um) thì ghi số -1.
 Ex:
 input: 1 3 9
@@ -17,10 +17,16 @@ output: 5
 Giải thích: Với u1=2 và  d =-2 ta có (um) là  2, 0, -2, -4, -6, -8, … Do đó -6 thuộc (um) và ở vị trí thứ 5.
 '''
 
-file_input = open("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.INP", "r")
-s1 = file_input.readline()
-A = [ int(i) for i in s1.split()]
-print(A)
+try:
+    file_input = open("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.INP", "r")
+    s1 = file_input.readline()
+    A = [ int(i) for i in s1.split()]
+    if len(A) != 3:
+        raise ValueError
+except FileNotFoundError:
+    print("Can't find file input")
+except ValueError:
+    print("File input must contain exactly 3 integers")
 u1, d, x = A[0], A[1], A[2]
 
 #Math formula
@@ -32,6 +38,7 @@ def main(u1, d, x):
     return -1
 
 #Brute force
+# The code not work for very large values
 def main_2(u1, d, x): 
     u = u1
     n = 1
@@ -43,6 +50,6 @@ def main_2(u1, d, x):
             n += 1
     return -1       
 
-result = main_2(u1, d, x)
+result = main(u1, d, x)
 file_output = open("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.OUT", "w")
 print(result, file = file_output)
