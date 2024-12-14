@@ -19,7 +19,7 @@ def input_file(file_path):
         A = [int(i) for i in Data[1].split()]
         if N != len(A):
             raise ValueError
-        return A
+        return A, N
     except FileNotFoundError:
         print("Can't find file input")
         return None
@@ -42,12 +42,12 @@ def output_file(file_path, result):
 
 
 # Brute force
-def main_2(A):
+def main_2(A, N):
     A.sort()
     F = 0
     a = b = None
-    for i in range(len(A)):
-        for j in range(i + 1, len(A)):
+    for i in range(N):
+        for j in range(i + 1, N):
             x = A[i] / A[j]
             if x > F and x < 1:
                 F = x
@@ -58,7 +58,7 @@ def main_2(A):
         return a, b
 
 
-A = input_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/MAXF.INP")
+A, N = input_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/MAXF.INP")
 if A:
-    result = main_2(A)
+    result = main_2(A, N)
 output_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/MAXF.OUT", result)
