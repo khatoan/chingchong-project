@@ -1,4 +1,4 @@
-'''
+"""
 Bài 2 (5 điểm): Cấp số cộng
 Cho cấp số cộng (um) có công sai d là số nguyên khác 0. 
 Tức là: um = um-1 + d (m thuộc N*, m ≥ 2 , d thuộc Z , d != 0).
@@ -15,41 +15,59 @@ Ex:
 input: 2 -2 -6
 output: 5
 Giải thích: Với u1=2 và  d =-2 ta có (um) là  2, 0, -2, -4, -6, -8, … Do đó -6 thuộc (um) và ở vị trí thứ 5.
-'''
+"""
 
-try:
-    file_input = open("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.INP", "r")
-    s1 = file_input.readline()
-    A = [ int(i) for i in s1.split()]
-    if len(A) != 3:
-        raise ValueError
-except FileNotFoundError:
-    print("Can't find file input")
-except ValueError:
-    print("File input must contain exactly 3 integers")
-u1, d, x = A[0], A[1], A[2]
 
-#Math formula
+def input_file(file_path):
+    try:
+        with open(file_path, "r") as file_input:
+            s1 = file_input.readline()
+        A = [int(i) for i in s1.split()]
+        if len(A) != 3:
+            raise ValueError
+        return A
+    except FileNotFoundError:
+        print("Can't find file input")
+        return None
+    except ValueError:
+        print("File input must contain exactly 3 integers")
+        return None
+
+
+def write_output(file_path, result):
+    try:
+        file_output = open(file_path, "w")
+        print(result, file=file_output)
+        file_output.close()
+    except Exception as e:
+        print(f"Lỗi khi ghi vào file đầu ra: {e}")
+
+
+# Math formula
 def main(u1, d, x):
-    if (x - u1)%d ==0:
-        n = (x - u1)//d+1
+    if (x - u1) % d == 0:
+        n = (x - u1) // d + 1
         if n > 0:
             return n
     return -1
 
-#Brute force
+
+# Brute force
 # The code not work for very large values
-def main_2(u1, d, x): 
+def main_2(u1, d, x):
     u = u1
     n = 1
-    while (d > 0 and u<=x) or (d < 0 and u>=x):
+    while (d > 0 and u <= x) or (d < 0 and u >= x):
         if u == x:
             return n
         else:
             u += d
             n += 1
-    return -1       
+    return -1
 
+
+A = input_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.INP")
+if A:
+    u1, d, x = A[0], A[1], A[2]
 result = main(u1, d, x)
-file_output = open("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.OUT", "w")
-print(result, file = file_output)
+write_output("C:/Users/komodo/Documents/chingchong-project/Đề 2020/ARIPOG.OUT", result)

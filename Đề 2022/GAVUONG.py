@@ -1,4 +1,4 @@
-'''
+"""
 **Bài 1: Gà vương**
 Vua gà tổ chức cuộc thi để chọn những chú gà có khả năng trở thành Gà Vương. Để được chọn, mỗi chú gà phải thỏa mãn các tiêu chí:
 1. **Số thứ tự của chú gà phải là số nguyên tố.**
@@ -24,37 +24,54 @@ Output:
 2
 3 5 
 
-'''
-file_input = open("C:/Users/komodo/Documents/chingchong-project/Đề 2022/GAVUONG.INP")
-import math
-s1 = file_input.readline()
-s2 = file_input.readline()
-s3 = file_input.readline()
-s4 = file_input.readline()
-N, K = int(s1), s2.strip()
-A = [int(i) for i in s3.split()]
-B = [i for i in s4]
-file_input.close()
+"""
 
-def prime(n:int):
+import math
+
+
+def input_file(file_path):
+    with open(file_path, "r") as file_input:
+        data = file_input.read().splitlines()
+
+    s1, s2, s3, s4 = data[0], data[1], data[2], data[3]
+    N = int(s1)
+    K = s2
+    weight_list = [int(i) for i in s3.split()]
+    color_list = [i for i in s4.strip()]
+    return N, K, weight_list, color_list
+
+
+def prime(n: int):
     if n < 2:
         return False
-    for i in range(2,int(math.sqrt(n))+1):
+    for i in range(2, int(math.sqrt(n)) + 1):
         if n % i == 0:
             return False
     return True
+
+
 def main():
-    result_max = max(A)
+    result_max = max(weight_list)
     result = []
-    for i in range(len(A)):
-        if prime(i+1) and B[i] == K:
-            if A[i] == result_max:
-                result.append(i+1)
+    for i in range(len(weight_list)):
+        if prime(i + 1) and color_list[i] == K:
+            if weight_list[i] == result_max:
+                result.append(i + 1)
     return result
 
-file_output = open("C:/Users/komodo/Documents/chingchong-project/Đề 2022/GAVUONG.OUT", "w")
+
+def output_file(file_path, result):
+    try:
+        with open(file_path, "w") as file_output:
+            print(len(result), file=file_output)
+            for i in result:
+                print(i, end=" ", file=file_output)
+    except Exception as e:
+        print(f"An error occurred while writing to the file: {e}")
+
+
+N, K, weight_list, color_list = input_file(
+    "C:/Users/komodo/Documents/chingchong-project/Đề 2022/GAVUONG.INP"
+)
 result = main()
-print(len(result), file = file_output)
-for i in result:
-    print(i, end = " ", file = file_output)
-file_output.close()
+output_file("C:/Users/komodo/Documents/chingchong-project/Đề 2022/GAVUONG.OUT", result)
