@@ -15,7 +15,13 @@ def input_file(file_path):
     try:
         with open(file_path, "r") as file_input:
             Data = file_input.readlines()
+        if len(Data) < 2:
+            print("Input file must contain at least two lines.")
+            return None
         N = int(Data[0])
+        if not Data[1].strip():
+            print("The second line in the input file is empty")
+            return None
         A = [int(i) for i in Data[1].split()]
         if N != len(A):
             raise ValueError
@@ -42,7 +48,7 @@ def output_file(file_path, result):
 
 
 # Brute force
-def main_2(A, N):
+def main_2(N, A):
     A.sort()
     F = 0
     a = b = None
@@ -58,7 +64,10 @@ def main_2(A, N):
         return a, b
 
 
-A, N = input_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/MAXF.INP")
-if A:
-    result = main_2(A, N)
+result = input_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/MAXF.INP")
+if result:
+    A, N = result
+    result = main_2(N, A)
+else:
+    result = -1
 output_file("C:/Users/komodo/Documents/chingchong-project/Đề 2020/MAXF.OUT", result)
