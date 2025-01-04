@@ -22,6 +22,7 @@ def file_input(file_path):
         with open(file_path, "r") as file_input:
             s = file_input.readline()
         if not s:
+            print("File input is empty")
             return None
         Data = [int(i) for i in s.split()]
         if len(Data) != 2:
