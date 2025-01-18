@@ -1,4 +1,6 @@
 def canStopRecursiveWithMemo(runway, initSpeed, startIndex=0, memo=None):
+    if not check_input(runway, initSpeed, startIndex):
+        return False
     # Only done the first time to initialize the memo
     if memo == None:
         memo = {}
@@ -37,7 +39,14 @@ def InsertIntoMemo(memo, startIndex, initSpeed, result):
     memo[startIndex][initSpeed] = result
 
 
-runway = [True, False, True, True, False]
-initSpeed = 2
-startIndex = 0
-print(canStopRecursiveWithMemo(runway, initSpeed, startIndex))
+def check_input(runway, initSpeed, startIndex):
+    if not isinstance(runway, list) or runway == None or runway == []:
+        return False
+    for i in runway:
+        if not isinstance(i, bool):
+            return False
+    if initSpeed is None or not isinstance(initSpeed, int):
+        return False
+    if startIndex is None or not isinstance(startIndex, int):
+        return False
+    return True

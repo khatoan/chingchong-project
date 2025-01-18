@@ -1,4 +1,6 @@
 def canStopIterative(runway, initSpeed, startIndex=0):
+    if not check_input(runway, initSpeed, startIndex):
+        return False
     # maximum speed cannot be larger than length of the runway. We will talk about
     # making this bound tighter later on.
     maxSpeed = len(runway)
@@ -32,3 +34,16 @@ def canStopIterative(runway, initSpeed, startIndex=0):
                     memo[position].add(speed)
                     break
     return initSpeed in memo[startIndex]
+
+
+def check_input(runway, initSpeed, startIndex):
+    if not isinstance(runway, list) or runway == None or runway == []:
+        return False
+    for i in runway:
+        if not isinstance(i, bool):
+            return False
+    if initSpeed is None or not isinstance(initSpeed, int):
+        return False
+    if startIndex is None or not isinstance(startIndex, int):
+        return False
+    return True
