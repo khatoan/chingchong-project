@@ -2,12 +2,14 @@ def CanstopRecursive(runway, initSpeed, startIndex=0):
     if not check_input(runway, initSpeed, startIndex):
         return False
     # NEGATIVE BASE CASES NEED TO GO FIRST
-    if (
+    negative_conditions = (
         startIndex >= len(runway)
         or startIndex < 0
         or initSpeed < 0
+        or initSpeed > maxSpeed
         or not runway[startIndex]
-    ):
+    )
+    if negative_conditions:
         return False
     # BASE CASE FOR  A STOPPING CONDITION
     if initSpeed == 0:
@@ -27,8 +29,6 @@ def check_input(runway, initSpeed, startIndex):
     for i in runway:
         if not isinstance(i, bool):
             return False
-    if initSpeed is None or not isinstance(initSpeed, int):
-        return False
-    if startIndex is None or not isinstance(startIndex, int):
+    if not isinstance(initSpeed, int) or not isinstance(startIndex, int):
         return False
     return True
