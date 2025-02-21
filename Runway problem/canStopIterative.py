@@ -3,11 +3,7 @@ def canStopIterative(runway, initSpeed, startIndex=0):
         return False
     # maximum speed cannot be larger than length of the runway. We will talk about
     # making this bound tighter later on.
-<<<<<<< HEAD
-    maxSpeed = len(runway)
-=======
     len_runway = maxSpeed = len(runway)
->>>>>>> 619ab038804ae45cfb8e2992e8a50d19914bce5d
     negative_conditions = (
         startIndex >= len(runway)
         or startIndex < 0
@@ -20,19 +16,11 @@ def canStopIterative(runway, initSpeed, startIndex=0):
     # {position i : set of speeds for which we can stop from position i}
     memo = {}
     # Base cases, we can stop when a position is not a spike and speed is zero.
-<<<<<<< HEAD
-    for position in range(length):
-        if runway[position]:
-            memo[position] = set([0])
-    # Outer loop to go over positions from the last one to the first one
-    for position in reversed(range(length)):
-=======
     for position in range(len_runway):
         if runway[position]:
             memo[position] = set([0])
     # Outer loop to go over positions from the last one to the first one
     for position in reversed(range(len_runway)):
->>>>>>> 619ab038804ae45cfb8e2992e8a50d19914bce5d
         # Skip positions which contain spikes
         if not runway[position]:
             continue
