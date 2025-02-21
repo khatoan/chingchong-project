@@ -16,7 +16,6 @@ def canStopIterative(runway, initSpeed, startIndex=0):
     # {position i : set of speeds for which we can stop from position i}
     memo = {}
     # Base cases, we can stop when a position is not a spike and speed is zero.
-    length = len(runway)
     for position in range(length):
         if runway[position]:
             memo[position] = set([0])
