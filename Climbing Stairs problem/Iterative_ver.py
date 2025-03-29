@@ -19,4 +19,4 @@ def Iterative_count(n):
 
 if __name__ == "__main__":
     n = 5
-    print(countWays(n))
+    print(Iterative_count(n))
