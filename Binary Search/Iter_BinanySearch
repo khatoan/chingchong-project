@@ -1,0 +1,26 @@
+def binarySearch(arr, low, high, x):
+    while low <= high:
+        mid = low + (high - low) // 2
+
+        # Check if x is present at mid
+        if arr[mid] == x:
+            return mid
+
+        # If x is greater, ignore left half
+        elif arr[mid] < x:
+            low = mid + 1
+
+        # If x is smaller, ignore right half
+        else:
+            high = mid - 1
+    return -1
+
+
+if __name__ == "__main__":
+    arr = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+    x = 23
+    result = binarySearch(arr, 0, len(arr) - 1, x)
+    if result != -1:
+        print(f"Element is present at index {result}")
+    else:
+        print("Element is not present in array")
