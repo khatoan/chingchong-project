@@ -1,0 +1,21 @@
+h2 {
+    color: firebrick;
+    font-family: Verdana;
+}
+
+h3 {
+    color: indianred;
+}
+
+label {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input {
+    background-color: yellow;
+}
+
+textarea {
+    background-color: ivory;
+}
