@@ -1,0 +1,52 @@
+.blue {
+    color: steelblue;
+}
+
+.red {
+    color: darkred;
+}
+
+.orangered {
+    font-family: Verdana;
+    font-size: 25px;
+    color: orangered;
+}
+
+input.yellow {
+    background-color: yellow;
+}
+
+input.blue {
+    background-color: blue;
+    color: white;
+}
+
+#tieu-de {
+    font-family: "Courier New";
+    font-size: 30px;
+    color: lightsalmon;
+}
+
+body {
+    margin: 30px;
+}
+
+h3 {
+    border: solid;
+    padding: 20px;
+}
+
+.header {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.content {
+    background-color: #f5f5dc;
+    /* màu be nhạt */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
